@@ -1,0 +1,5679 @@
+{
+  "summary": "105 tables, 610 columns (including inherited columns), 110 foreign-key constraints, 2 inheritance relationships.",
+  "legend": "PK: primary key. FK: foreign key. U1, U2, ...: unique key/index groups local to each table (all columns with the same U number form one composite key). ?: nullable. *: inherited column. Gray tables are cross-group references showing referenced and primary-key columns only. Arrows point from foreign-key columns to referenced columns; they are not crow's-foot cardinalities. Dashed arrows indicate PostgreSQL INHERITS, which does not inherit primary/unique/foreign-key constraints. Only declared foreign keys are drawn; column-name similarities do not create relationships. Defaults, checks, triggers, functions, non-unique indexes and function-created runtime tables are not shown.",
+  "tables": {
+    "public.acl_permission": {
+      "columns": {
+        "fullpath": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "permission": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_type": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    },
+    "public.activity": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_album": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "create_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.address": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "lang": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "admin": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "level": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "value": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_unit": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.administrative": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "value": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "value"
+        ]
+      ],
+      "parents": []
+    },
+    "public.album": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "shared": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "create_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "cover": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "sort_by": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "sort_direction": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "normalized_name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "passphrase_share": {
+          "type": "text",
+          "not_null": false,
+          "inherited": false
+        },
+        "item_count": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "start_time": {
+          "type": "bigint",
+          "not_null": false,
+          "inherited": false
+        },
+        "end_time": {
+          "type": "bigint",
+          "not_null": false,
+          "inherited": false
+        },
+        "name_for_sort": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "passphrase_share"
+        ]
+      ],
+      "parents": []
+    },
+    "public.normal_album": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": true
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": true
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": true
+        },
+        "type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": true
+        },
+        "shared": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": true
+        },
+        "create_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": true
+        },
+        "cover": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": true
+        },
+        "sort_by": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": true
+        },
+        "sort_direction": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": true
+        },
+        "normalized_name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": true
+        },
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": true
+        },
+        "passphrase_share": {
+          "type": "text",
+          "not_null": false,
+          "inherited": true
+        },
+        "item_count": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": true
+        },
+        "start_time": {
+          "type": "bigint",
+          "not_null": false,
+          "inherited": true
+        },
+        "end_time": {
+          "type": "bigint",
+          "not_null": false,
+          "inherited": true
+        },
+        "name_for_sort": {
+          "type": "text",
+          "not_null": true,
+          "inherited": true
+        },
+        "cant_migrate_condition": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        },
+        "condition": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        },
+        "status": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": [
+        "public.album"
+      ]
+    },
+    "public.share": {
+      "columns": {
+        "passphrase": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "privacy_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "modified_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "expired_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "hashed_password": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "enable": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "passphrase"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.aperture": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "normalized_name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "name"
+        ]
+      ],
+      "parents": []
+    },
+    "public.async_db_migration_task": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_version": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "payload": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.background_task": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "operation": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "status": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "created_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "modified_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "total": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "completion": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "error": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "extra_info": {
+          "type": "text",
+          "not_null": false,
+          "inherited": false
+        },
+        "payload": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        },
+        "skip": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "overwrite": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.burst_additional": {
+      "columns": {
+        "grouping_key": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "sequence": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_unit": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [
+        [
+          "id_unit"
+        ]
+      ],
+      "parents": []
+    },
+    "public.camera": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "normalized_name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "name"
+        ]
+      ],
+      "parents": []
+    },
+    "public.check_album_task": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_group": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_folder": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "status": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.cluster": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_person": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "is_manual": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.concept": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "stem": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "hidden": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "display_threshold": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "confidence_threshold": {
+          "type": "numeric(5, 4)",
+          "not_null": false,
+          "inherited": false
+        },
+        "parent": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "sort_index": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.concept_album_additional": {
+      "columns": {
+        "id_concept": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "item_count": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "custom_cover_id_unit": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "visibility_status": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_user",
+          "id_concept"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.concept_rawdata": {
+      "columns": {
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "result": {
+          "type": "pg_catalog.json",
+          "not_null": true,
+          "inherited": false
+        },
+        "need_migrate": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "version": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_unit"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.concept_synonym": {
+      "columns": {
+        "lang": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_concept": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "synonym": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "priority": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "normalized_synonym": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    },
+    "public.concept_threshold": {
+      "columns": {
+        "id_concept": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "version": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "confidence_threshold": {
+          "type": "numeric(5, 4)",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_concept",
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.condition_album": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": true
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": true
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": true
+        },
+        "type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": true
+        },
+        "shared": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": true
+        },
+        "create_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": true
+        },
+        "cover": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": true
+        },
+        "sort_by": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": true
+        },
+        "sort_direction": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": true
+        },
+        "normalized_name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": true
+        },
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": true
+        },
+        "passphrase_share": {
+          "type": "text",
+          "not_null": false,
+          "inherited": true
+        },
+        "item_count": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": true
+        },
+        "start_time": {
+          "type": "bigint",
+          "not_null": false,
+          "inherited": true
+        },
+        "end_time": {
+          "type": "bigint",
+          "not_null": false,
+          "inherited": true
+        },
+        "name_for_sort": {
+          "type": "text",
+          "not_null": true,
+          "inherited": true
+        },
+        "condition": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        },
+        "need_update_item": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "item_update_version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": [
+        "public.album"
+      ]
+    },
+    "public.config": {
+      "columns": {
+        "key": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "value": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "key"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.convert_thumbnail_allocation": {
+      "columns": {
+        "session_id": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "sent_to_client": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "filename": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "unit_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "item_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "status": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "lower_extension": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "thumbnail_type": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "created_at": {
+          "type": "timestamp",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "session_id",
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.delete_album": {
+      "columns": {
+        "id_normal_album": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    },
+    "public.delete_condition_album": {
+      "columns": {
+        "id_condition_album": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    },
+    "public.delete_item": {
+      "columns": {
+        "id_item": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "reason": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    },
+    "public.dsm_group": {
+      "columns": {
+        "gid": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "gid"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.dsm_user": {
+      "columns": {
+        "uid": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "uid"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.exposure_time": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "normalized_name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "name"
+        ]
+      ],
+      "parents": []
+    },
+    "public.face": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "bounding_box": {
+          "type": "pg_catalog.json",
+          "not_null": true,
+          "inherited": false
+        },
+        "landmark": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        },
+        "feature": {
+          "type": "bytea",
+          "not_null": false,
+          "inherited": false
+        },
+        "picture": {
+          "type": "oid",
+          "not_null": false,
+          "inherited": false
+        },
+        "score": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_unit": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "ref_id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_person_group": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_person": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "is_manual": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.favorite_timeline": {
+      "columns": {
+        "id_item": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "item_type": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "unit_type": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_favorite_user": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "takentime": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_unit"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.file_operation_error": {
+      "columns": {
+        "id_task": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "reason": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [
+        [
+          "id_task",
+          "target_type",
+          "target_id"
+        ]
+      ],
+      "parents": []
+    },
+    "public.file_operation_task": {
+      "columns": {
+        "id_task": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_folder_id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "policy": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_item": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_folder": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_folder_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_task"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.filter": {
+      "columns": {
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_filter": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "filter_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [
+        [
+          "id_unit",
+          "id_filter",
+          "filter_type",
+          "id_user"
+        ]
+      ],
+      "parents": []
+    },
+    "public.focal_length": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "normalized_name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "name"
+        ]
+      ],
+      "parents": []
+    },
+    "public.folder": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "parent": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name_for_sort": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "permission": {
+          "type": "text",
+          "not_null": false,
+          "inherited": false
+        },
+        "mtime": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "passphrase_share": {
+          "type": "text",
+          "not_null": false,
+          "inherited": false
+        },
+        "shared": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "sort_by": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "sort_direction": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "permission_parent": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name_for_search": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "normalized_name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "passphrase_share"
+        ]
+      ],
+      "parents": []
+    },
+    "public.folder_operation_error": {
+      "columns": {
+        "id_task": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "reason": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_task",
+          "target_id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.folder_operation_task": {
+      "columns": {
+        "id_folder": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_task": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_folder"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.unit": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "item_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "filename": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "filesize": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "createtime": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "mtime": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "takentime": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "duplicate_hash": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "cache_key": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "resolution": {
+          "type": "pg_catalog.json",
+          "not_null": true,
+          "inherited": false
+        },
+        "index_stage": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_geocoding": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_item": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "mobile_cache_mtime": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "reindex_flag": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "normalized_filename": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "is_major": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_folder": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name_for_sort": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "index_version": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "id",
+          "item_type"
+        ],
+        [
+          "id",
+          "takentime"
+        ],
+        [
+          "id",
+          "id_item"
+        ],
+        [
+          "id",
+          "is_major"
+        ],
+        [
+          "id",
+          "id_user"
+        ]
+      ],
+      "parents": []
+    },
+    "public.general_tag": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "count": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "normalized_name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "name_for_sort": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.many_unit_has_many_general_tag": {
+      "columns": {
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_general_tag": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_unit",
+          "id_general_tag"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.geocoding": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "grouping_key": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "level_1": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "level_2": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "level_3": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "level_4": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "level_5": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "level_6": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "admin_1": {
+          "type": "smallint",
+          "not_null": false,
+          "inherited": false
+        },
+        "admin_2": {
+          "type": "smallint",
+          "not_null": false,
+          "inherited": false
+        },
+        "admin_3": {
+          "type": "smallint",
+          "not_null": false,
+          "inherited": false
+        },
+        "admin_4": {
+          "type": "smallint",
+          "not_null": false,
+          "inherited": false
+        },
+        "admin_5": {
+          "type": "smallint",
+          "not_null": false,
+          "inherited": false
+        },
+        "admin_6": {
+          "type": "smallint",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.geocoding_info": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "lang": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "first_level": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "second_level": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "country": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_geocoding": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.group_info": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "gid": {
+          "type": "bigint",
+          "not_null": false,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "enable": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "gid"
+        ]
+      ],
+      "parents": []
+    },
+    "public.index_queue": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "status": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "task": {
+          "type": "bytea",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.iso": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "normalized_name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "name"
+        ]
+      ],
+      "parents": []
+    },
+    "public.item": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_similar_group": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "is_similar_top_pick": {
+          "type": "boolean",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.lens": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "normalized_name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "name"
+        ]
+      ],
+      "parents": []
+    },
+    "public.live_additional": {
+      "columns": {
+        "grouping_key": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_unit": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [
+        [
+          "id_unit"
+        ]
+      ],
+      "parents": []
+    },
+    "public.split_filename": {
+      "columns": {
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "lower_extension": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_unit"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.many_item_has_many_normal_album": {
+      "columns": {
+        "sequence": {
+          "type": "double precision",
+          "not_null": true,
+          "inherited": false
+        },
+        "item_provider_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_item": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_normal_album": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "album_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_item",
+          "id_normal_album"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.many_unit_has_many_administrative": {
+      "columns": {
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_administrative": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_unit",
+          "id_administrative"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.many_unit_has_many_concept": {
+      "columns": {
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_concept": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "confidence": {
+          "type": "numeric(5, 4)",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_unit",
+          "id_concept"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.many_unit_has_many_favorite_user": {
+      "columns": {
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_favorite_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_unit",
+          "id_favorite_user"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.many_unit_has_many_person": {
+      "columns": {
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_person": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_unit",
+          "id_person"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.metadata": {
+      "columns": {
+        "id_unit": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "description": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "orientation": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "focal_length": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "iso": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "exposure_time": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "aperture": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "lens": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "camera": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "latitude": {
+          "type": "double precision",
+          "not_null": false,
+          "inherited": false
+        },
+        "longitude": {
+          "type": "double precision",
+          "not_null": false,
+          "inherited": false
+        },
+        "flash": {
+          "type": "smallint",
+          "not_null": false,
+          "inherited": false
+        },
+        "orientation_original": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "rating": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "normalized_description": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [
+        [
+          "id_unit"
+        ]
+      ],
+      "parents": []
+    },
+    "public.mobile_config": {
+      "columns": {
+        "uuid": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "config": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    },
+    "public.motion_photo_additional": {
+      "columns": {
+        "duration": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "video_info": {
+          "type": "pg_catalog.json",
+          "not_null": true,
+          "inherited": false
+        },
+        "audio_info": {
+          "type": "pg_catalog.json",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_unit": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [
+        [
+          "id_unit"
+        ]
+      ],
+      "parents": []
+    },
+    "public.thumbnail": {
+      "columns": {
+        "type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "status": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_unit": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    },
+    "public.video_additional": {
+      "columns": {
+        "duration": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "video_info": {
+          "type": "pg_catalog.json",
+          "not_null": true,
+          "inherited": false
+        },
+        "audio_info": {
+          "type": "pg_catalog.json",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_unit": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [
+        [
+          "id_unit"
+        ]
+      ],
+      "parents": []
+    },
+    "public.notification": {
+      "columns": {
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "event": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_user",
+          "event",
+          "target_id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.one_filter_has_many_unit": {
+      "columns": {
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_aperture": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_camera": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_exposure_time": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_flash": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_focal_length": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_folder": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_iso": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_item_type": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_lens": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_takentime": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_rating": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "is_major": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_unit"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.person": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "hidden": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "custom_cover": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "cover": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "normalized_name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "created_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.person_item_count": {
+      "columns": {
+        "id_person": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "item_count": {
+          "type": "bigint",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_person",
+          "id_user"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.person_group": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "weight": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "feature": {
+          "type": "bytea",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_cluster": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "is_manual": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.person_migration_mapping": {
+      "columns": {
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_person_source": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_person": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "named_by_migration": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_user",
+          "id_person_source"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.photo_request": {
+      "columns": {
+        "passphrase_share": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "modified_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "filesize_limit": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "subject": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "description": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_album": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "album_passphrase_share": {
+          "type": "text",
+          "not_null": false,
+          "inherited": false
+        },
+        "folder_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "folder_home_path": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "passphrase_share"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.search_timeline": {
+      "columns": {
+        "id_item": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "item_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "unit_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "takentime": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_item"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.share_permission": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "permission": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "passphrase_share": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "passphrase_share",
+          "target_type",
+          "target_id"
+        ]
+      ],
+      "parents": []
+    },
+    "public.user_info": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "uid": {
+          "type": "bigint",
+          "not_null": false,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "config": {
+          "type": "pg_catalog.json",
+          "not_null": true,
+          "inherited": false
+        },
+        "enable": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "uid"
+        ]
+      ],
+      "parents": []
+    },
+    "public.similar_group": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "top_pick": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "item_count": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "update_at": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "custom_top_pick": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.similar_hash": {
+      "columns": {
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "pdq_hash": {
+          "type": "bigint[]",
+          "not_null": false,
+          "inherited": false
+        },
+        "takentime": {
+          "type": "bigint",
+          "not_null": false,
+          "inherited": false
+        },
+        "need_action": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "skip": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "is_major": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_item": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_unit"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.similar_timeline": {
+      "columns": {
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_item": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "takentime": {
+          "type": "bigint",
+          "not_null": false,
+          "inherited": false
+        },
+        "id_similar_group": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "similar_group_item_count": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_unit",
+          "id_item",
+          "id_user"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.takentime": {
+      "columns": {
+        "id": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "takentime_day": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "takentime_month": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "takentime": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id"
+        ]
+      ],
+      "unique": [
+        [
+          "takentime_day"
+        ]
+      ],
+      "parents": []
+    },
+    "public.team_library_folder_has_many_sorting": {
+      "columns": {
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_folder": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "sort_by": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "sort_direction": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_user",
+          "id_folder"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.team_library_group_permission": {
+      "columns": {
+        "id_group": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "permission": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "auto_backup": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_group"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.team_library_user_permission": {
+      "columns": {
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "permission": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "auto_backup": {
+          "type": "boolean",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_user"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.thumb_preview": {
+      "columns": {
+        "picture": {
+          "type": "oid",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    },
+    "public.thumbnail_version": {
+      "columns": {
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_unit": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "sm_size_hash": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_unit"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.tmp_old_named": {
+      "columns": {
+        "old_person": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "name": {
+          "type": "text",
+          "not_null": false,
+          "inherited": false
+        },
+        "old_unit": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    },
+    "public.tmp_old_unit2": {
+      "columns": {
+        "old_id": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "old_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "folder": {
+          "type": "text",
+          "not_null": false,
+          "inherited": false
+        },
+        "filename": {
+          "type": "text",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    },
+    "public.tmp_unit_map": {
+      "columns": {
+        "old_id": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "old_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "new_id": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "new_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    },
+    "public.udc_event": {
+      "columns": {
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "timestamp": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "payload": {
+          "type": "text",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    },
+    "public.udc_statistic": {
+      "columns": {
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "key": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "value": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "key",
+          "id_user"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_0": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_1": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_10": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_11": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_12": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_13": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_2": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_3": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_4": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_5": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_6": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_7": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_8": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_event_history_9": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_type": {
+          "type": "smallint",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id": {
+          "type": "integer[]",
+          "not_null": true,
+          "inherited": false
+        },
+        "target_id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "trigger_id_user": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        },
+        "event_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "event_detail": {
+          "type": "pg_catalog.json",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.user_flag": {
+      "columns": {
+        "id_user": {
+          "type": "integer",
+          "not_null": true,
+          "inherited": false
+        },
+        "flag": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "value": {
+          "type": "text",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "id_user",
+          "flag"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.version_time": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "modified_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [
+        [
+          "version"
+        ]
+      ],
+      "unique": [],
+      "parents": []
+    },
+    "public.version_time_0": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "modified_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [
+        [
+          "version",
+          "modified_time"
+        ]
+      ],
+      "parents": []
+    },
+    "public.version_time_1": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "modified_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [
+        [
+          "version",
+          "modified_time"
+        ]
+      ],
+      "parents": []
+    },
+    "public.version_time_2": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "modified_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [
+        [
+          "version",
+          "modified_time"
+        ]
+      ],
+      "parents": []
+    },
+    "public.version_time_3": {
+      "columns": {
+        "version": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "modified_time": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [
+        [
+          "version",
+          "modified_time"
+        ]
+      ],
+      "parents": []
+    },
+    "public.video_convert": {
+      "columns": {
+        "duration": {
+          "type": "bigint",
+          "not_null": true,
+          "inherited": false
+        },
+        "quality": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "video_info": {
+          "type": "pg_catalog.json",
+          "not_null": true,
+          "inherited": false
+        },
+        "audio_info": {
+          "type": "pg_catalog.json",
+          "not_null": true,
+          "inherited": false
+        },
+        "id_unit": {
+          "type": "integer",
+          "not_null": false,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    },
+    "test.tables": {
+      "columns": {
+        "table_schema": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "table_name": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        },
+        "table_type": {
+          "type": "text",
+          "not_null": true,
+          "inherited": false
+        }
+      },
+      "primary": [],
+      "unique": [],
+      "parents": []
+    }
+  },
+  "foreign_keys": [
+    {
+      "source": "public.address",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "id_user"
+      ],
+      "references": [
+        "id",
+        "id_user"
+      ],
+      "name": "address_composite_unit_fk"
+    },
+    {
+      "source": "public.address",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "address_id_user_fk"
+    },
+    {
+      "source": "public.address",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "address_unit_fk"
+    },
+    {
+      "source": "public.address",
+      "target": "public.administrative",
+      "columns": [
+        "level"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "level_fk"
+    },
+    {
+      "source": "public.album",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "album_id_user_fk"
+    },
+    {
+      "source": "public.album",
+      "target": "public.share",
+      "columns": [
+        "passphrase_share"
+      ],
+      "references": [
+        "passphrase"
+      ],
+      "name": "album_share_fk"
+    },
+    {
+      "source": "public.normal_album",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "normal_album_id_user_fk"
+    },
+    {
+      "source": "public.normal_album",
+      "target": "public.share",
+      "columns": [
+        "passphrase_share"
+      ],
+      "references": [
+        "passphrase"
+      ],
+      "name": "normal_album_share_fk"
+    },
+    {
+      "source": "public.share",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "share_id_user_info_fk"
+    },
+    {
+      "source": "public.async_db_migration_task",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "async_db_migration_task_user_fk"
+    },
+    {
+      "source": "public.burst_additional",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "burst_additional_unit_fk"
+    },
+    {
+      "source": "public.burst_additional",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "burst_additional_user_id_fk"
+    },
+    {
+      "source": "public.cluster",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "cluster_id_user_fk"
+    },
+    {
+      "source": "public.cluster",
+      "target": "public.person",
+      "columns": [
+        "id_person"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "cluster_person_fk"
+    },
+    {
+      "source": "public.concept_album_additional",
+      "target": "public.concept",
+      "columns": [
+        "id_concept"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "concept_album_additional_concept_fk"
+    },
+    {
+      "source": "public.concept_album_additional",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "user_info_fk"
+    },
+    {
+      "source": "public.concept_rawdata",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "id_user"
+      ],
+      "references": [
+        "id",
+        "id_user"
+      ],
+      "name": "concept_rawdata_composite_unit_fk"
+    },
+    {
+      "source": "public.concept_synonym",
+      "target": "public.concept",
+      "columns": [
+        "id_concept"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "concept_synonym_concept_fk"
+    },
+    {
+      "source": "public.concept_threshold",
+      "target": "public.concept",
+      "columns": [
+        "id_concept"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "concept_threshold_concept_fk"
+    },
+    {
+      "source": "public.condition_album",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "condition_album_id_user_fk"
+    },
+    {
+      "source": "public.condition_album",
+      "target": "public.share",
+      "columns": [
+        "passphrase_share"
+      ],
+      "references": [
+        "passphrase"
+      ],
+      "name": "condition_album_share_fk"
+    },
+    {
+      "source": "public.convert_thumbnail_allocation",
+      "target": "public.unit",
+      "columns": [
+        "id",
+        "id_user"
+      ],
+      "references": [
+        "id",
+        "id_user"
+      ],
+      "name": "convert_thumbnail_allocation_unit_fkey"
+    },
+    {
+      "source": "public.delete_album",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "delete_album_id_user_fk"
+    },
+    {
+      "source": "public.delete_condition_album",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "delete_condition_album_id_user_fk"
+    },
+    {
+      "source": "public.delete_item",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "delete_item_id_user_fk"
+    },
+    {
+      "source": "public.face",
+      "target": "public.unit",
+      "columns": [
+        "ref_id_unit",
+        "id_user"
+      ],
+      "references": [
+        "id",
+        "id_user"
+      ],
+      "name": "face_composite_unit_fk"
+    },
+    {
+      "source": "public.face",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "face_id_user_fk"
+    },
+    {
+      "source": "public.face",
+      "target": "public.person",
+      "columns": [
+        "id_person"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "face_person_fk"
+    },
+    {
+      "source": "public.face",
+      "target": "public.person_group",
+      "columns": [
+        "id_person_group"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "person_group_fk"
+    },
+    {
+      "source": "public.face",
+      "target": "public.unit",
+      "columns": [
+        "ref_id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "person_ref_id_unit_fk"
+    },
+    {
+      "source": "public.favorite_timeline",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "id_user"
+      ],
+      "references": [
+        "id",
+        "id_user"
+      ],
+      "name": "favorite_timeline_unit_id_user_id_fk"
+    },
+    {
+      "source": "public.favorite_timeline",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "id_item"
+      ],
+      "references": [
+        "id",
+        "id_item"
+      ],
+      "name": "unit_id_item_id_fk"
+    },
+    {
+      "source": "public.favorite_timeline",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "item_type"
+      ],
+      "references": [
+        "id",
+        "item_type"
+      ],
+      "name": "unit_id_item_type_fk"
+    },
+    {
+      "source": "public.favorite_timeline",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "takentime"
+      ],
+      "references": [
+        "id",
+        "takentime"
+      ],
+      "name": "unit_id_takentime_fk"
+    },
+    {
+      "source": "public.file_operation_error",
+      "target": "public.background_task",
+      "columns": [
+        "id_task"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "file_operation_error_id_task_fk"
+    },
+    {
+      "source": "public.file_operation_task",
+      "target": "public.background_task",
+      "columns": [
+        "id_task"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "file_operation_task_id_task_fk"
+    },
+    {
+      "source": "public.filter",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "id_user"
+      ],
+      "references": [
+        "id",
+        "id_user"
+      ],
+      "name": "filter_composite_unit_fk"
+    },
+    {
+      "source": "public.filter",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "filter_id_user_fk"
+    },
+    {
+      "source": "public.filter",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "filter_unit_fk"
+    },
+    {
+      "source": "public.folder",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "folder_id_user_fk"
+    },
+    {
+      "source": "public.folder",
+      "target": "public.folder",
+      "columns": [
+        "parent"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "folder_parent_fk"
+    },
+    {
+      "source": "public.folder",
+      "target": "public.share",
+      "columns": [
+        "passphrase_share"
+      ],
+      "references": [
+        "passphrase"
+      ],
+      "name": "folder_share_fk"
+    },
+    {
+      "source": "public.folder_operation_error",
+      "target": "public.background_task",
+      "columns": [
+        "id_task"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "folder_operation_error_fk_id_task"
+    },
+    {
+      "source": "public.folder_operation_task",
+      "target": "public.background_task",
+      "columns": [
+        "id_task"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "folder_operation_task_fk_id_task"
+    },
+    {
+      "source": "public.unit",
+      "target": "public.item",
+      "columns": [
+        "id_item"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "item_fk"
+    },
+    {
+      "source": "public.unit",
+      "target": "public.folder",
+      "columns": [
+        "id_folder"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "unit_folder_fk"
+    },
+    {
+      "source": "public.unit",
+      "target": "public.geocoding",
+      "columns": [
+        "id_geocoding"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "unit_id_geocoding_fk"
+    },
+    {
+      "source": "public.unit",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "unit_user_id_fk"
+    },
+    {
+      "source": "public.many_unit_has_many_general_tag",
+      "target": "public.general_tag",
+      "columns": [
+        "id_general_tag"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "general_tag_fk"
+    },
+    {
+      "source": "public.many_unit_has_many_general_tag",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "many_unit_has_many_general_tag_unit_fk"
+    },
+    {
+      "source": "public.geocoding",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "geocoding_id_user_fk"
+    },
+    {
+      "source": "public.geocoding",
+      "target": "public.administrative",
+      "columns": [
+        "level_1"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "level_1_fk"
+    },
+    {
+      "source": "public.geocoding",
+      "target": "public.administrative",
+      "columns": [
+        "level_2"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "level_2_fk"
+    },
+    {
+      "source": "public.geocoding",
+      "target": "public.administrative",
+      "columns": [
+        "level_3"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "level_3_fk"
+    },
+    {
+      "source": "public.geocoding",
+      "target": "public.administrative",
+      "columns": [
+        "level_4"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "level_4_fk"
+    },
+    {
+      "source": "public.geocoding",
+      "target": "public.administrative",
+      "columns": [
+        "level_5"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "level_5_fk"
+    },
+    {
+      "source": "public.geocoding",
+      "target": "public.administrative",
+      "columns": [
+        "level_6"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "level_6_fk"
+    },
+    {
+      "source": "public.geocoding_info",
+      "target": "public.geocoding",
+      "columns": [
+        "id_geocoding"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "geocoding_fk"
+    },
+    {
+      "source": "public.geocoding_info",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "geocoding_info_id_user_fk"
+    },
+    {
+      "source": "public.item",
+      "target": "public.similar_group",
+      "columns": [
+        "id_similar_group"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "id_similar_group_fk"
+    },
+    {
+      "source": "public.item",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "item_user_id_fk"
+    },
+    {
+      "source": "public.live_additional",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "live_additional_unit_fk"
+    },
+    {
+      "source": "public.split_filename",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "split_filename_id_unit_fkey"
+    },
+    {
+      "source": "public.many_item_has_many_normal_album",
+      "target": "public.user_info",
+      "columns": [
+        "item_provider_id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "item_provider_id_user_fk"
+    },
+    {
+      "source": "public.many_item_has_many_normal_album",
+      "target": "public.user_info",
+      "columns": [
+        "album_id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "many_item_has_many_normal_album_album_id_user_fk"
+    },
+    {
+      "source": "public.many_item_has_many_normal_album",
+      "target": "public.item",
+      "columns": [
+        "id_item"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "many_item_has_many_normal_album_item_fk"
+    },
+    {
+      "source": "public.many_item_has_many_normal_album",
+      "target": "public.normal_album",
+      "columns": [
+        "id_normal_album"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "normal_album_fk"
+    },
+    {
+      "source": "public.many_unit_has_many_administrative",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "many_unit_has_many_administrative_unit_fk"
+    },
+    {
+      "source": "public.many_unit_has_many_concept",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "id_user"
+      ],
+      "references": [
+        "id",
+        "id_user"
+      ],
+      "name": "many_unit_has_many_concept_composite_unit_fk"
+    },
+    {
+      "source": "public.many_unit_has_many_concept",
+      "target": "public.concept",
+      "columns": [
+        "id_concept"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "many_unit_has_many_concept_concept_fk"
+    },
+    {
+      "source": "public.many_unit_has_many_favorite_user",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "id_user"
+      ],
+      "references": [
+        "id",
+        "id_user"
+      ],
+      "name": "many_unit_has_many_favorite_user_unit_id_user_id_fk"
+    },
+    {
+      "source": "public.many_unit_has_many_person",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "id_user"
+      ],
+      "references": [
+        "id",
+        "id_user"
+      ],
+      "name": "many_unit_has_many_person_composite_unit_fk"
+    },
+    {
+      "source": "public.many_unit_has_many_person",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "many_unit_has_many_person_unit_fk"
+    },
+    {
+      "source": "public.metadata",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "metadata_unit_fk"
+    },
+    {
+      "source": "public.motion_photo_additional",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "motion_photo_additional_unit_fk"
+    },
+    {
+      "source": "public.thumbnail",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "thumbnail_unit_fk"
+    },
+    {
+      "source": "public.video_additional",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "video_additional_unit_fk"
+    },
+    {
+      "source": "public.notification",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "notification_id_user_fk"
+    },
+    {
+      "source": "public.one_filter_has_many_unit",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "id_user"
+      ],
+      "references": [
+        "id",
+        "id_user"
+      ],
+      "name": "one_filter_has_many_unit_composite_unit_fk"
+    },
+    {
+      "source": "public.one_filter_has_many_unit",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "one_filter_has_many_unit_unit_fk"
+    },
+    {
+      "source": "public.person",
+      "target": "public.face",
+      "columns": [
+        "cover"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "cover_id_face"
+    },
+    {
+      "source": "public.person",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "person_id_user_fk"
+    },
+    {
+      "source": "public.person_item_count",
+      "target": "public.person",
+      "columns": [
+        "id_person"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "person_item_count_person_fk"
+    },
+    {
+      "source": "public.person_group",
+      "target": "public.cluster",
+      "columns": [
+        "id_cluster"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "cluster_fk"
+    },
+    {
+      "source": "public.person_group",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "person_group_id_user_fk"
+    },
+    {
+      "source": "public.person_migration_mapping",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "person_migration_mapping_id_user_fk"
+    },
+    {
+      "source": "public.photo_request",
+      "target": "public.share",
+      "columns": [
+        "album_passphrase_share"
+      ],
+      "references": [
+        "passphrase"
+      ],
+      "name": "album_passphrase_share_fk"
+    },
+    {
+      "source": "public.photo_request",
+      "target": "public.normal_album",
+      "columns": [
+        "id_album"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "id_album_fk"
+    },
+    {
+      "source": "public.photo_request",
+      "target": "public.share",
+      "columns": [
+        "passphrase_share"
+      ],
+      "references": [
+        "passphrase"
+      ],
+      "name": "passphrase_share_fk"
+    },
+    {
+      "source": "public.photo_request",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "photo_request_folder_id_user_fk"
+    },
+    {
+      "source": "public.photo_request",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "photo_request_id_user_fk"
+    },
+    {
+      "source": "public.share_permission",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "share_permission_id_user_fk"
+    },
+    {
+      "source": "public.share_permission",
+      "target": "public.share",
+      "columns": [
+        "passphrase_share"
+      ],
+      "references": [
+        "passphrase"
+      ],
+      "name": "share_permission_share_fk"
+    },
+    {
+      "source": "public.similar_group",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "similar_group_id_user_fk"
+    },
+    {
+      "source": "public.similar_hash",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "similar_hash_id_unit_fk"
+    },
+    {
+      "source": "public.similar_hash",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "similar_hash_id_user_fk"
+    },
+    {
+      "source": "public.similar_hash",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "id_item"
+      ],
+      "references": [
+        "id",
+        "id_item"
+      ],
+      "name": "similar_hash_unit_item_fk"
+    },
+    {
+      "source": "public.similar_hash",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "is_major"
+      ],
+      "references": [
+        "id",
+        "is_major"
+      ],
+      "name": "similar_hash_unit_major_fk"
+    },
+    {
+      "source": "public.similar_timeline",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "id_user"
+      ],
+      "references": [
+        "id",
+        "id_user"
+      ],
+      "name": "similar_timeline_composite_unit_user_fk"
+    },
+    {
+      "source": "public.similar_timeline",
+      "target": "public.item",
+      "columns": [
+        "id_item"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "similar_timeline_item_fk"
+    },
+    {
+      "source": "public.similar_timeline",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "id_item"
+      ],
+      "references": [
+        "id",
+        "id_item"
+      ],
+      "name": "similar_unit_item_fk"
+    },
+    {
+      "source": "public.similar_timeline",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "takentime"
+      ],
+      "references": [
+        "id",
+        "takentime"
+      ],
+      "name": "similar_unit_takentime_fk"
+    },
+    {
+      "source": "public.team_library_folder_has_many_sorting",
+      "target": "public.folder",
+      "columns": [
+        "id_folder"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "team_library_folder_has_many_sorting_folder_fk"
+    },
+    {
+      "source": "public.team_library_folder_has_many_sorting",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "team_library_folder_has_many_sorting_id_user_fk"
+    },
+    {
+      "source": "public.team_library_group_permission",
+      "target": "public.group_info",
+      "columns": [
+        "id_group"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "id_group_fk"
+    },
+    {
+      "source": "public.team_library_user_permission",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "team_library_user_permission_id_user_fk"
+    },
+    {
+      "source": "public.thumb_preview",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "thumb_preview_id_unit_fk"
+    },
+    {
+      "source": "public.thumbnail_version",
+      "target": "public.unit",
+      "columns": [
+        "id_unit",
+        "id_user"
+      ],
+      "references": [
+        "id",
+        "id_user"
+      ],
+      "name": "thumbnail_version_composite_unit_fk"
+    },
+    {
+      "source": "public.user_flag",
+      "target": "public.user_info",
+      "columns": [
+        "id_user"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "user_flag_id_user_fk"
+    },
+    {
+      "source": "public.video_convert",
+      "target": "public.unit",
+      "columns": [
+        "id_unit"
+      ],
+      "references": [
+        "id"
+      ],
+      "name": "video_convert_unit_fk"
+    }
+  ],
+  "inheritance": [
+    [
+      "public.normal_album",
+      "public.album"
+    ],
+    [
+      "public.condition_album",
+      "public.album"
+    ]
+  ],
+  "groups": [
+    {
+      "name": "Media and files",
+      "tables": [
+        "public.unit",
+        "public.item",
+        "public.folder",
+        "public.split_filename",
+        "public.live_additional",
+        "public.burst_additional",
+        "public.motion_photo_additional",
+        "public.video_additional"
+      ]
+    },
+    {
+      "name": "Metadata and geography",
+      "tables": [
+        "public.metadata",
+        "public.aperture",
+        "public.camera",
+        "public.exposure_time",
+        "public.focal_length",
+        "public.iso",
+        "public.lens",
+        "public.takentime",
+        "public.geocoding",
+        "public.geocoding_info",
+        "public.address",
+        "public.administrative"
+      ]
+    },
+    {
+      "name": "Albums, sharing and favorites",
+      "tables": [
+        "public.album",
+        "public.normal_album",
+        "public.condition_album",
+        "public.share",
+        "public.share_permission",
+        "public.photo_request",
+        "public.many_item_has_many_normal_album",
+        "public.many_unit_has_many_favorite_user",
+        "public.favorite_timeline"
+      ]
+    },
+    {
+      "name": "People and face recognition",
+      "tables": [
+        "public.face",
+        "public.person",
+        "public.person_group",
+        "public.cluster",
+        "public.many_unit_has_many_person",
+        "public.person_item_count",
+        "public.person_migration_mapping"
+      ]
+    },
+    {
+      "name": "Tags, concepts and search",
+      "tables": [
+        "public.general_tag",
+        "public.many_unit_has_many_general_tag",
+        "public.many_unit_has_many_administrative",
+        "public.concept",
+        "public.concept_album_additional",
+        "public.concept_rawdata",
+        "public.concept_synonym",
+        "public.concept_threshold",
+        "public.many_unit_has_many_concept",
+        "public.filter",
+        "public.one_filter_has_many_unit",
+        "public.search_timeline"
+      ]
+    },
+    {
+      "name": "Similar media",
+      "tables": [
+        "public.similar_group",
+        "public.similar_hash",
+        "public.similar_timeline"
+      ]
+    },
+    {
+      "name": "Users and permissions",
+      "tables": [
+        "public.user_info",
+        "public.group_info",
+        "public.dsm_user",
+        "public.dsm_group",
+        "public.acl_permission",
+        "public.team_library_folder_has_many_sorting",
+        "public.team_library_group_permission",
+        "public.team_library_user_permission",
+        "public.user_flag",
+        "public.mobile_config",
+        "public.notification",
+        "public.activity"
+      ]
+    },
+    {
+      "name": "Processing and background tasks",
+      "tables": [
+        "public.background_task",
+        "public.file_operation_error",
+        "public.file_operation_task",
+        "public.folder_operation_error",
+        "public.folder_operation_task",
+        "public.check_album_task",
+        "public.index_queue",
+        "public.delete_album",
+        "public.delete_condition_album",
+        "public.delete_item",
+        "public.async_db_migration_task",
+        "public.convert_thumbnail_allocation",
+        "public.thumbnail",
+        "public.thumb_preview",
+        "public.thumbnail_version",
+        "public.video_convert"
+      ]
+    },
+    {
+      "name": "Events and version tracking",
+      "tables": [
+        "public.udc_event",
+        "public.udc_statistic",
+        "public.version_time",
+        "public.version_time_0",
+        "public.version_time_1",
+        "public.version_time_2",
+        "public.version_time_3",
+        "public.user_event_history_0",
+        "public.user_event_history_1",
+        "public.user_event_history_2",
+        "public.user_event_history_3",
+        "public.user_event_history_4",
+        "public.user_event_history_5",
+        "public.user_event_history_6",
+        "public.user_event_history_7",
+        "public.user_event_history_8",
+        "public.user_event_history_9",
+        "public.user_event_history_10",
+        "public.user_event_history_11",
+        "public.user_event_history_12",
+        "public.user_event_history_13"
+      ]
+    },
+    {
+      "name": "Configuration, temporary and test tables",
+      "tables": [
+        "public.config",
+        "public.tmp_old_named",
+        "public.tmp_old_unit2",
+        "public.tmp_unit_map",
+        "test.tables"
+      ]
+    }
+  ]
+}
